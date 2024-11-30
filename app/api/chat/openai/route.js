@@ -1,8 +1,8 @@
- import { OpenAIApi } from 'openai';
+ import { OpenAI } from 'openai';
 import { NextResponse } from 'next/server';
 
-const openai = new OpenAIApi({
-  apiKey: process.env.OPENAI_API_KEY, // Replace with your actual API key
+const openai = new OpenAI({
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_KEY, // Make sure your .env.local has this key
 });
 
 export async function POST(req) {
@@ -18,7 +18,7 @@ export async function POST(req) {
       model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: message }],
     });
-
+console.log('ok ash response',response )
     const reply = response.choices[0].message.content;
 
     return NextResponse.json({ reply });

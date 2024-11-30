@@ -7,8 +7,8 @@ export default function ChatPage() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const sendMessage = async () => {
-
+  const sendMessage = async (e) => {
+    e.preventDefault();
     if (!input.trim()) return;
 
     const userMessage = { role: 'user', content: input };
@@ -17,7 +17,7 @@ export default function ChatPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/api/chat', {
+      const response = await fetch('http://localhost:3000/api/chat/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -39,26 +39,32 @@ export default function ChatPage() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto' }}>
-      <h1>Chat with AI</h1>
-      <div style={{ border: '1px solid #ccc', padding: '10px', height: '400px', overflowY: 'auto', marginBottom: '10px' }}>
+    <div className="p-5 max-w-xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Chat with AI</h1>
+      <div className="border border-gray-300 p-4 h-96 overflow-y-auto mb-4">
         {messages.map((msg, index) => (
-          <div key={index} style={{ margin: '5px 0' }}>
+          <div key={index} className="mb-2">
             <b>{msg.role === 'user' ? 'You:' : 'AI:'}</b> {msg.content}
           </div>
         ))}
         {loading && <div>AI is typing...</div>}
       </div>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type your message..."
-        style={{ width: '75%', padding: '10px', marginRight: '10px' }}
-      />
-      <button onClick={sendMessage} disabled={loading} style={{ padding: '10px 20px' }}>
-        Send
-      </button>
+      <form onSubmit={sendMessage} className="flex items-center">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type your message..."
+          className="text-black border-2 border-gray-300 rounded-md p-2 w-3/4 mr-2"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-blue-500 text-white p-2 rounded-md disabled:bg-gray-300"
+        >
+          Send
+        </button>
+      </form>
     </div>
   );
 }
