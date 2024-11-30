@@ -6,3 +6,5 @@
 </h1>
 
 ### 📖💻 We are Starting R3F Youtube
+
+https://nextjs.org/docs/pages/api-reference/components/head
