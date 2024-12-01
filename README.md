@@ -7,7 +7,16 @@
 
 ### 📖💻 We are Starting R3F Youtube
 
-https://nextjs.org/docs/pages/api-reference/components/head
 
 ### Rescources
+
+download player
 https://readyplayer.me/
+player model link+morphs
+https://models.readyplayer.me/674bfd44c51e152bea704596.glb?morphTargets=mouthSmile,ARKit
+
+gltfjsx
+https://gltf.pmnd.rs/
+
+get morphs
+https://docs.readyplayer.me/ready-player-me/api-reference/rest-api/avatars/get-3d-avatars

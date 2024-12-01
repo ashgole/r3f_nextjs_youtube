@@ -3,6 +3,7 @@ import { Environment, Html, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import React from "react";
+import Player from "../player/Player";
 
 const CanvasComponent = () => {
   return (
@@ -14,10 +15,7 @@ const CanvasComponent = () => {
           <OrbitControls enableZoom={true} />
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 0, 5]} />
-          <mesh>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color="blue" />
-          </mesh>
+          <Player />
         </Suspense>
       </Canvas>
     </div>

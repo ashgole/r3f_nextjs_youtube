@@ -1,8 +1,9 @@
 'use client';
 
+import { sendMessageM } from '@/app/utils/api';
 import { useState } from 'react';
 
- const SpeakPage=()=> {
+const SpeakPage = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -28,12 +29,7 @@ import { useState } from 'react';
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/api/chat/gemini', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      });
-
+      const response = await sendMessageM(input);
       const data = await response.json();
 
       if (response.ok) {
