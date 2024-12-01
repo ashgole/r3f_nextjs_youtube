@@ -1,4 +1,3 @@
-//utils/api.js
 export const sendMessageM = async (input) => {
     const response = await fetch('http://localhost:3000/api/chat/gemini', {
         method: 'POST',

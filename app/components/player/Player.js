@@ -3,26 +3,30 @@
 import React, { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import { talkingAtom } from "@/app/utils/jotai";
+import { useAtom } from "jotai";
 
 const Player = (props) => {
+  const [isTalking, setIsTalking] = useAtom(talkingAtom)
   const { nodes, materials } = useGLTF("./models/avtar_morph.glb"); // Replace with your GLTF file path
   const phonemes = useRef({ open: 0, smile: 0 }); // Controls lip morph targets
 
-  // Simulate speech (e.g., "Hello World")
   useEffect(() => {
-      const sequence = [
-          { open: 1, smile: 0.5, duration: 300 }, // Open mouth
-          { open: 0.5, smile: 0.2, duration: 200 }, // Relax
-          { open: 0, smile: 0, duration: 300 }, // Close
-        ];
+    const sequence = [
+      { open: 1, smile: 0.5, duration: 300 }, // Open mouth
+      { open: 0.5, smile: 0.2, duration: 200 }, // Relax
+      { open: 0, smile: 0, duration: 300 }, // Close
+    ];
 
-        let index = 0;
+    let index = 0;
     const interval = setInterval(() => {
-        console.log('ok s', )
-      if (index >= sequence.length) {
+      if(!isTalking){
         index=0
-        // clearInterval(interval);
-        // return;
+        clearInterval(interval)
+        return
+      }
+      if (isTalking && index >= sequence.length) {
+        index=0
       }
       const { open, smile } = sequence[index];
       phonemes.current = { open, smile };
@@ -30,11 +34,11 @@ const Player = (props) => {
     }, sequence[index]?.duration || 300);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isTalking]);
 
   // Use frame to animate lips dynamically
   useFrame(() => {
-      if (nodes?.Wolf3D_Head?.morphTargetInfluences) {
+    if (nodes?.Wolf3D_Head?.morphTargetInfluences) {
       const lips = nodes.Wolf3D_Head.morphTargetInfluences;
       lips[0] = phonemes.current.open; // Open mouth
       lips[1] = phonemes.current.smile; // Smile shape
