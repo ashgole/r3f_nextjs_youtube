@@ -13,7 +13,7 @@
 download player
 https://readyplayer.me/
 player model link+morphs
-https://models.readyplayer.me/674bfd44c51e152bea704596.glb?morphTargets=mouthSmile,ARKit
+https://models.readyplayer.me/674c61af6014b478711ad7b6.glb?morphTargets=mouthSmile,ARKit
 
 gltfjsx
 https://gltf.pmnd.rs/

@@ -13,19 +13,22 @@ const Player = (props) => {
 
   useEffect(() => {
     const sequence = [
-      { open: 1, smile: 0.5, duration: 300 }, // Open mouth
-      { open: 0.5, smile: 0.2, duration: 200 }, // Relax
-      { open: 0, smile: 0, duration: 300 }, // Close
+      { open: 1.0,   duration: 300 }, // Open mouth
+      { open: 0.5,   duration: 200 }, // Relax
+      { open: 0, duration: 300 }, // Close
     ];
 
     let index = 0;
     const interval = setInterval(() => {
-      if(!isTalking){
-        index=0
-        clearInterval(interval)
-        return
-      }
-      if (isTalking && index >= sequence.length) {
+      // if(!isTalking){
+      //   index=0
+      //   clearInterval(interval)
+      //   return
+      // }
+      // if (isTalking && index >= sequence.length) {
+      //   index=0
+      // }
+      if ( index >= sequence.length) {
         index=0
       }
       const { open, smile } = sequence[index];
@@ -41,7 +44,6 @@ const Player = (props) => {
     if (nodes?.Wolf3D_Head?.morphTargetInfluences) {
       const lips = nodes.Wolf3D_Head.morphTargetInfluences;
       lips[0] = phonemes.current.open; // Open mouth
-      lips[1] = phonemes.current.smile; // Smile shape
     }
   });
 
