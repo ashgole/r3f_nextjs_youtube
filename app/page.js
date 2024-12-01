@@ -1,9 +1,12 @@
-import ChatPage from "./pages/chat/page";
+import CanvasComponent from "./components/CanvasComponent/CanvasComponent";
 
 
 export default function Home() {
   return (
     <>
-      <ChatPage /></>
+    <div>
+    <CanvasComponent/>
+    </div>
+    </>
   );
 }

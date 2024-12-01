@@ -1,5 +1,5 @@
 {
-  "name": "r3f_nextjs_youtube",
+  "name": "r3f_landing_page",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,12 +10,19 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
-    "axios": "^1.7.8",
-    "next": "15.0.3",
-    "openai": "^4.73.1",
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.8",
+    "@react-three/postprocessing": "^2.16.3",
+    "gsap": "^3.12.5",
+    "jotai": "^2.10.0",
+    "leva": "^0.9.35",
+    "next": "14.2.13",
+    "postprocessing": "^6.36.3",
+    "r3f-perf": "^7.2.1",
     "razorpay": "^2.9.5",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react": "^18",
+    "react-dom": "^18",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "postcss": "^8",

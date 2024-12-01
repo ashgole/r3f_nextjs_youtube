@@ -3,6 +3,11 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_GEMINI);
 
+export async function GET(req) {
+  return NextResponse.json({
+    name: "ashish"
+  })
+}
 export async function POST(req) {
   try {
     const body = await req.json();
